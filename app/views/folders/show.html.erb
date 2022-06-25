@@ -1,0 +1,6 @@
+<h1><%= @folder.name %></h1>
+<% @folder.notes.each do |note| %>
+  <%= note.name %>
+<% end %>
+
+<%= link_to "delete", folder_path(@folder), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>

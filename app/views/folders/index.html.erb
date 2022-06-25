@@ -1,0 +1,14 @@
+<h1>Hi!</h1>
+
+<% @folders.each do |folder| %>
+  <%= folder.name %>
+<% end %>
+
+<h2>Add a folder</h2>
+
+<%= simple_form_for [@folder] do |f| %>
+  <div class="m-3">
+    <%= f.input :name, placeholder: "new folder" %>
+    <%# <%= f.button :submit %>
+  </div>
+<% end %>
