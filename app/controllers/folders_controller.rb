@@ -12,7 +12,7 @@ class FoldersController < ApplicationController
     @folder = Folder.new(folder_params)
     @folder.user = current_user
     if @folder.save!
-      redirect_to root_path, notice: 'Folder was successfully created.'
+      redirect_to folders_path, notice: 'Folder was successfully created.'
     else
       render :index, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class FoldersController < ApplicationController
   def destroy
     @folder = Folder.find(params[:id])
     @folder.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to folders_path, status: :see_other
   end
 
   private
