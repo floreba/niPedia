@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/heartcombo/simple_form.git
+  revision: 23205201a935c7e52c39549756e2ec2e2ec47793
+  specs:
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -136,6 +144,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-darwin)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.1)
     public_suffix (4.0.7)
@@ -224,6 +234,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-20
 
 DEPENDENCIES
   bootsnap
@@ -236,6 +247,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   selenium-webdriver
+  simple_form!
   sprockets-rails
   stimulus-rails
   turbo-rails
@@ -247,4 +259,4 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.32
+   2.3.15
