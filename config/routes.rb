@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'folders#index'
+  root to: 'notes#edit'
   devise_for :users
 
-  resources :notes, only: %i[create update index destroy]
+  resources :notes, only: %i[create update index destroy edit]
   resources :folders, only: [:index, :show, :create, :destroy]
   resources :taggings, only: [:index, :create, :destroy]
 
