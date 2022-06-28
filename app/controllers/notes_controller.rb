@@ -4,6 +4,7 @@ class NotesController < ApplicationController
   def index
     @notes = current_user.notes
     @note = Note.new
+    @notes = policy_scope(Note)
   end
 
   def create_or_find_last_note
@@ -12,14 +13,17 @@ class NotesController < ApplicationController
     elsif
       @note = current_user.notes.order("updated_at ASC").last
     end
+    authorize @note
   end
-#
+
   def edit
+    authorize @note
   end
 
   def create
     @note = Note.new(note_params)
     @note.user = current_user
+    authorize @note
     if @note.save!
       redirect_to root_path, notice: 'Note was successfully created.'
     else
@@ -28,6 +32,7 @@ class NotesController < ApplicationController
   end
 
   def update
+    authorize @note
     if @note.update(note_params)
       redirect_to edit_note_path(@note)
     else
@@ -36,7 +41,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note = Note.find(params[:id])
+    authorize @note
     @note.destroy
     redirect_to root_path, status: :see_other
   end
