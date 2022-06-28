@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'notes#edit'
+  root to: 'notes#create_or_find_last_note'
   devise_for :users
 
   resources :notes, only: %i[create update index destroy edit]
