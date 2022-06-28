@@ -1,15 +1,20 @@
 class NotesController < ApplicationController
+  before_action :set_note, only: %i[edit update destroy]
+
   def index
     @notes = current_user.notes
     @note = Note.new
   end
 
-  def edit
+  def create_or_find_last_note
     if current_user.notes.empty?
       @note = Note.create(name: "new note", content: "content")
     elsif
-      @note = current_user.notes[0]
+      @note = current_user.notes.order("updated_at ASC").last
     end
+  end
+#
+  def edit
   end
 
   def create
@@ -23,7 +28,6 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find(params[:id])
     if @note.update(note_params)
       redirect_to edit_note_path(@note)
     else
@@ -38,6 +42,10 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def set_note
+    @note = Note.find(params[:id])
+  end
 
   def note_params
     params.require(:note).permit(:name, :content)
