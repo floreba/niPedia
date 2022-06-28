@@ -13,7 +13,7 @@ class NotesController < ApplicationController
       @note = current_user.notes.order("updated_at ASC").last
     end
   end
-
+#
   def edit
   end
 
