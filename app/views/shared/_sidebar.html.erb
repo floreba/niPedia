@@ -1,0 +1,175 @@
+<div class="wrapper">
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">niPedia</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <%= link_to folders_path do %>
+          <i class='bx bxl-c-plus-plus'></i>
+          <span class="link_name">Folders</span>
+        <% end %>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Folders</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="icon-link">
+          <%= link_to notes_path do %>
+            <i class='bx bx-book-alt'></i>
+            <span class="link_name">All Notes</span>
+          <% end %>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">All Notes</a></li>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Login Form</a></li>
+          <li><a href="#">Card Design</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class='bx bx-collection'></i>
+            <span class="link_name">Graph Overview</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Graph Overview</a></li>
+          <li><a href="#">HTML & CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">PHP & MySQL</a></li>
+        </ul>
+      </li>
+
+      <%# <li>
+        <a href="#">
+          <i class='bx bx-pie-chart-alt-2'></i>
+          <span class="link_name">Analytics</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Analytics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-line-chart'></i>
+          <span class="link_name">Chart</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Chart</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class='bx bx-plug'></i>
+            <span class="link_name">Plugins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Plugins</a></li>
+          <li><a href="#">UI Face</a></li>
+          <li><a href="#">Pigments</a></li>
+          <li><a href="#">Box Icons</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-compass'></i>
+          <span class="link_name">Explore</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Explore</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-history'></i>
+          <span class="link_name">History</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">History</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="link_name">Setting</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Setting</a></li>
+        </ul>
+      </li> %>
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+
+          </div>
+          <div class="name-job">
+            <div class="profile_name"><%= current_user.email %></div>
+            <div class="job">Web Desginer</div>
+          </div>
+          <%= link_to "log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <%# <i class='bx bx-menu'></i> %>
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </section>
+</div>
+
+<script>
+  // let arrow = document.querySelectorAll(".arrow");
+  // for (var i = 0; i < arrow.length; i++) {
+  //   arrow[i].addEventListener("click", (e) => {
+  //     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+  //     arrowParent.classList.toggle("showMenu");
+  //   });
+  // }
+
+  // let sidebarBtn = document.querySelector(".fa-bars");
+  // let sidebar = document.querySelector(".sidebar");
+
+  // console.log(sidebarBtn);
+  // sidebarBtn.addEventListener("click", () => {
+  //   sidebar.classList.toggle("close");
+  // });
+
+
+  $(function () {
+      /* console.log("width: "+ document.body.clientWidth); */
+
+      resizeScreen();
+      $(window).resize(function(){
+        resizeScreen();
+      });
+
+      $('.fa-bars').click(function(){
+
+        // 點選選單按鈕時，大螢幕為新增或移除.close，小螢幕新增或移除.small-screen預設有.close，
+        if(document.body.clientWidth > 400){
+          $('.sidebar').toggleClass('close');
+        }else{
+          $('.sidebar').toggleClass('small-screen');
+        }
+      });
+
+      function resizeScreen() {
+        // 大螢幕.sidebar預設為沒有.close，小螢幕.sidebar預設為有.close
+        if(document.body.clientWidth < 400){
+          $('.sidebar').addClass('close');
+        }else{
+          $('.sidebar').removeClass('close');
+        }
+      }
+    });
+</script>
