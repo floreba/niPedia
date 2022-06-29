@@ -32,9 +32,9 @@ class NotesController < ApplicationController
     @note.user = current_user
     if params[:folder_id]
       @note.folder = Folder.find(params[:folder_id])
+      authorize @folder
     end
     authorize @note
-    authorize @folder
     if @note.save!
       redirect_to edit_note_path(@note), notice: 'Note was successfully created.'
     else
