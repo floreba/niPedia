@@ -1,6 +1,6 @@
 <h1><%= @folder.name %></h1>
 <% @folder.notes.each do |note| %>
-  <%= link_to note.name, edit_note_path(note) %>
+  <p><%= link_to note.name, edit_note_path(note) %></p>
 <% end %>
 
 <%= link_to "Add note to folder", new_folder_note_path(@folder) %>

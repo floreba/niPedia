@@ -14,7 +14,7 @@
 
   <body>
     <div class="main-container">
-      <%= render "shared/sidebar" unless request.path == "/" || current_user.nil? %>
+      <%= render "shared/sidebar" unless  current_user.nil? %>
       <div>
         <%= yield %>
       </div>
