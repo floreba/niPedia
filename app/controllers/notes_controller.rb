@@ -16,6 +16,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    @folder = Folder.find(params[:folder_id])
   end
 #
   def edit
@@ -24,8 +25,8 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
-    if note_folder_params[:folder_id]
-      @note.folder = Folder.find(note_folder_params[:folder_id])
+    if params[:folder_id]
+      @note.folder = Folder.find(params[:folder_id])
     end
     if @note.save!
       redirect_to edit_note_path(@note), notice: 'Note was successfully created.'
@@ -54,11 +55,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
-  def note_params
-    params.require(:note).permit(:name, :content)
+  def set_folder
+    @folder = Folder.find(params[:folder_id])
   end
 
-  def note_folder_params
-    params.require(:note).permit(:folder_id)
+  def note_params
+    params.require(:note).permit(:name, :content)
   end
 end

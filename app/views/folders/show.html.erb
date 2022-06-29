@@ -4,5 +4,6 @@
 <% end %>
 
 <%= link_to "Add note to folder", new_folder_note_path(@folder) %>
+
 <br>
 <%= link_to "delete_folder", folder_path(@folder), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>

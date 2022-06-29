@@ -1,7 +1,7 @@
 <h1>All notes</h1>
 
 <% @notes.each do |note| %>
-  <%= link_to note.name, edit_note_path(note) %>
+  <p><%= link_to note.name, edit_note_path(note) %></p>
 <% end %>
 
 <h2>Create a new note</h2>

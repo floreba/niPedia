@@ -1,11 +1,12 @@
 class FoldersController < ApplicationController
+  before_action :set_folder, only: %i[show destroy]
+
   def index
     @folders = current_user.folders
     @folder = Folder.new
   end
 
   def show
-    @folder = Folder.find(params[:id])
   end
 
   def create
@@ -19,12 +20,15 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    @folder = Folder.find(params[:id])
     @folder.destroy
     redirect_to folders_path, status: :see_other
   end
 
   private
+
+  def set_folder
+    @folder = Folder.find(params[:id])
+  end
 
   def folder_params
     params.require(:folder).permit(:name)
