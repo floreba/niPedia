@@ -2,9 +2,7 @@ class FoldersController < ApplicationController
   def index
     @folders = current_user.folders
     @folder = Folder.new # what is this for 👀? --floreba
-
     @folders = policy_scope(Note)
-    authorize @folder
   end
 
   def show
@@ -24,8 +22,8 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    authorize @folder
     @folder = Folder.find(params[:id])
+    authorize @folder
     @folder.destroy
     redirect_to folders_path, status: :see_other
   end
