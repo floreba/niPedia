@@ -11,6 +11,9 @@ gem "rails", "~> 7.0.3"
 # devise for Users
 gem "devise"
 
+# pundit for authorization
+gem "pundit"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
