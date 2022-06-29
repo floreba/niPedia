@@ -1,4 +1,6 @@
 class FoldersController < ApplicationController
+  before_action :set_folder, only: %i[show destroy]
+
   def index
     @folders = current_user.folders
     @folder = Folder.new # what is this for 👀? --floreba
@@ -29,6 +31,10 @@ class FoldersController < ApplicationController
   end
 
   private
+
+  def set_folder
+    @folder = Folder.find(params[:id])
+  end
 
   def folder_params
     params.require(:folder).permit(:name)

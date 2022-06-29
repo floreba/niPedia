@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "components/index";
+
+.main-container {
+  display: flex;
+}

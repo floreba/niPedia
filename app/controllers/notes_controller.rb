@@ -16,6 +16,13 @@ class NotesController < ApplicationController
     authorize @note
   end
 
+  def new
+    @note = Note.new
+    @folder = Folder.find(params[:folder_id])
+    authorize @note
+    authorize @folder
+  end
+#
   def edit
     authorize @note
   end
@@ -23,9 +30,13 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
+    if params[:folder_id]
+      @note.folder = Folder.find(params[:folder_id])
+    end
     authorize @note
+    authorize @folder
     if @note.save!
-      redirect_to root_path, notice: 'Note was successfully created.'
+      redirect_to edit_note_path(@note), notice: 'Note was successfully created.'
     else
       render :index, status: :unprocessable_entity
     end
@@ -43,13 +54,16 @@ class NotesController < ApplicationController
   def destroy
     authorize @note
     @note.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to notes_path, status: :see_other
   end
 
   private
-
   def set_note
     @note = Note.find(params[:id])
+  end
+
+  def set_folder
+    @folder = Folder.find(params[:folder_id])
   end
 
   def note_params

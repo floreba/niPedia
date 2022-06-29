@@ -1,5 +1,13 @@
-<%= simple_form_for note do |f| %>
+<% if params[:folder_id]%>
+  <%= simple_form_for [folder, note] do |f| %>
   <%= f.input :name,input_html: { class: "input-field" } %>
   <%= f.input :content, input_html: { class: "input-field" } %>
-  <%= f.button :submit, "Update" %>
+  <%= f.button :submit, "Add note" %>
+  <% end %>
+<% else %>
+  <%= simple_form_for note do |f| %>
+  <%= f.input :name,input_html: { class: "input-field" } %>
+  <%= f.input :content, input_html: { class: "input-field" } %>
+  <%= f.button :submit, "Update note" %>
+  <% end %>
 <% end %>

@@ -1,3 +1,7 @@
 <h1>Edit your Note: <%= @note.name  %></h1>
 <h2>Updated at <%= @note.updated_at.to_datetime %></h2>
+<% if @note.folder %>
+  <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
+<% end %>
 <%= render "form", note: @note %>
+<%= link_to "delete_note", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
