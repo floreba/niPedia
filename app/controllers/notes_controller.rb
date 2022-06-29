@@ -13,6 +13,10 @@ class NotesController < ApplicationController
       @note = current_user.notes.order("updated_at ASC").last
     end
   end
+
+  def new
+    @note = Note.new
+  end
 #
   def edit
   end
@@ -20,8 +24,11 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
+    if note_folder_params[:folder_id]
+      @note.folder = Folder.find(note_folder_params[:folder_id])
+    end
     if @note.save!
-      redirect_to root_path, notice: 'Note was successfully created.'
+      redirect_to edit_note_path(@note), notice: 'Note was successfully created.'
     else
       render :index, status: :unprocessable_entity
     end
@@ -38,7 +45,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to notes_path, status: :see_other
   end
 
   private
@@ -49,5 +56,9 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:name, :content)
+  end
+
+  def note_folder_params
+    params.require(:note).permit(:folder_id)
   end
 end
