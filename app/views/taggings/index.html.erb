@@ -1,0 +1,16 @@
+<h1>Your taggings</h1>
+
+<% @taggings.each do |tagging| %>
+  <p> Tagger: <%= link_to tagging.name, edit_note_path(tagging.tagger) %></p>
+  <p> Reference: <%= link_to tagging.name, edit_note_path(tagging.reference) %></p>
+
+<% end %>
+
+<h2>Add a tagging</h2>
+
+<%= simple_form_for [@tagging] do |f| %>
+  <div class="m-3">
+    <%= f.input :name, placeholder: "new tagging" %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

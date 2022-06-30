@@ -3,8 +3,8 @@ class FoldersController < ApplicationController
 
   def index
     @folders = current_user.folders
-    @folder = Folder.new # what is this for 👀? --floreba
-    @folders = policy_scope(Note)
+    @folder = Folder.new
+    @folders = policy_scope(Folder)
   end
 
   def show
