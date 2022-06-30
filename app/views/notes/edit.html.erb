@@ -4,4 +4,18 @@
   <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
 <% end %>
 <%= render "form", note: @note %>
+
+
+
+<h2>Tags</h2>
+
+<% @taggers.each do |tagging| %>
+  <p> Referenced by: <%= link_to tagging.name, edit_note_path(tagging.reference) %></p>
+<% end %>
+
+<% @references.each do |tagging| %>
+  <p> Tagged by: <%= link_to tagging.name, edit_note_path(tagging.tagger) %></p>
+<% end %>
+
+
 <%= link_to "delete_note", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>

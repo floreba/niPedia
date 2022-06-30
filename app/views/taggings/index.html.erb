@@ -1,16 +1,14 @@
-<h1>Your taggings</h1>
 
-<% @taggings.each do |tagging| %>
-  <p> Tagger: <%= link_to tagging.name, edit_note_path(tagging.tagger) %></p>
-  <p> Reference: <%= link_to tagging.name, edit_note_path(tagging.reference) %></p>
+<h2>All your Taggings</h2>
 
-<% end %>
 
-<h2>Add a tagging</h2>
 
-<%= simple_form_for [@tagging] do |f| %>
-  <div class="m-3">
-    <%= f.input :name, placeholder: "new tagging" %>
-    <%= f.button :submit %>
-  </div>
+<% @taggings.each do |t| %>
+  <p>Reference</p>
+  <p><%= link_to t.name, edit_note_path(t.reference_id) %></p>
+  <p>Tagged by Note</p>
+  <p><%= link_to Note.find(t.tagger_id).name, edit_note_path(t.tagger_id) %></p>
+  <%# used br just fir visual clearance, can change later" %>
+  <br>
+  <br>
 <% end %>

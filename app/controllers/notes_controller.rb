@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: %i[edit update destroy]
 
   def index
-    @notes = current_user.notes
+    # @notes = current_user.notes
     @note = Note.new
     @notes = policy_scope(Note)
   end
@@ -25,6 +25,7 @@ class NotesController < ApplicationController
 #
   def edit
     authorize @note
+    get_taggings # see private method --> gets taggeres & references
   end
 
   def create
@@ -58,6 +59,7 @@ class NotesController < ApplicationController
   end
 
   private
+  
   def set_note
     @note = Note.find(params[:id])
   end
@@ -68,5 +70,10 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:name, :content)
+  end
+
+  def get_taggings
+    @taggers = policy_scope(Tagging.all).where('tagger_id = ?', @note.id)
+    @references = policy_scope(Tagging.all).where('reference_id = ?', @note.id)
   end
 end
