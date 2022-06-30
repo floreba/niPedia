@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :notes, only: %i[update index destroy edit new create]
+
+  get '/taggings', to: 'taggings#index', as: 'taggings'
+  post '/taggings/:id', to: 'taggings#create', as: 'create_tagging'
+  delete '/taggings/:id', to: 'taggings#destroy', as: 'delete_tagging'
+
   resources :folders, only: [:index, :show, :create, :destroy] do
     resources :notes, only: %i[new create]
   end
-  resources :taggings, only: [:index, :create, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
