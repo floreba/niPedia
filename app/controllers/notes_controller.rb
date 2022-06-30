@@ -22,10 +22,11 @@ class NotesController < ApplicationController
     authorize @note
     authorize @folder
   end
-#
+
   def edit
     authorize @note
     get_taggings # see private method --> gets taggeres & references
+    @tagging = Tagging.new
   end
 
   def create
@@ -59,7 +60,7 @@ class NotesController < ApplicationController
   end
 
   private
-  
+
   def set_note
     @note = Note.find(params[:id])
   end
@@ -76,4 +77,5 @@ class NotesController < ApplicationController
     @taggers = policy_scope(Tagging.all).where('tagger_id = ?', @note.id)
     @references = policy_scope(Tagging.all).where('reference_id = ?', @note.id)
   end
+
 end

@@ -4,24 +4,25 @@
   <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
 <% end %>
 <%= render "form", note: @note %>
-
+<br> <br>
+<%= render "taggings/form", tagging: @tagging %>
 
 
 <h2>Tags</h2>
 
 <% @taggers.each do |tagging| %>
-  <p><%= tagging.id %></p>
-  <p><%= tagging.tagger_id %></p>
-  <p><%= tagging.reference_id %></p>
+  <p>Tagging ID <%= tagging.id %></p>
+  <p>Tagger ID <%= tagging.tagger_id %></p>
+  <p>Reference ID<%= tagging.reference_id %></p>
   <p> Referenced by: <%= link_to tagging.name, edit_note_path(tagging.reference_id) %></p>
   <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
 
 <% end %>
 
 <% @references.each do |tagging| %>
-  <p><%= tagging.id %></p>
-  <p><%= tagging.tagger_id %></p>
-  <p><%= tagging.reference_id %></p>
+  <p>Tagging ID<%= tagging.id %></p>
+  <p>Tagger ID<%= tagging.tagger_id %></p>
+  <p>Reference ID <%= tagging.reference_id %></p>
   <p> Tagged by: <%= link_to Note.find(tagging.tagger_id).name, edit_note_path(tagging.tagger_id) %></p>
   <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
 <% end %>

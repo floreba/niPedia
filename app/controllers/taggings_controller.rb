@@ -3,9 +3,16 @@ class TaggingsController < ApplicationController
     @taggings = policy_scope(Tagging.all)
   end
 
+  def new
+    @tagging = Tagging.new
+    # @note = Note.find(params[:id])
+    # raise
+  end
+
   def create
+    raise
     @tagging = Tagging.new(tagging_params)
-    @tagging.tagger_id = Note.find(params[:note_id])
+    @tagging.tagger_id = Note.find(params[:id])
     @tagging.reference_id = policy_scope(Note).find_by('name = ?', @tagging.name)
 
     if @tagging.reference_id.empty? || @tagging.reference.nill?
@@ -13,6 +20,13 @@ class TaggingsController < ApplicationController
       @reference_note.save!
       @tagging.reference_id = @reference_note.id
     end
+    if @tagging.save!
+      redirect_to edit_note_path(@tagging.tagger_id), notice: 'Tagging was successfully created.'
+    else
+      render :index, status: :unprocessable_entity
+    end
+
+
   end
 
   def destroy
