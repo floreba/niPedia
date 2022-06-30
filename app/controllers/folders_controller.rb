@@ -2,7 +2,6 @@ class FoldersController < ApplicationController
   before_action :set_folder, only: %i[show destroy]
 
   def index
-    # @folders = current_user.folders
     @folder = Folder.new
     @folders = policy_scope(Folder)
   end
