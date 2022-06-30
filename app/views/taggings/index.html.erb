@@ -4,6 +4,7 @@
 
 
 <% @taggings.each do |t| %>
+  <p>Tag ID: <%= t.id %></p>
   <p>Reference</p>
   <p><%= link_to t.name, edit_note_path(t.reference_id) %></p>
   <p>Tagged by Note</p>

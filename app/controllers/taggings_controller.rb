@@ -16,9 +16,12 @@ class TaggingsController < ApplicationController
   end
 
   def destroy
-    @tagging = Tagging.find(params[:tagging_id])
+    @tagging = Tagging.find(params[:id])
+    authorize @tagging
+    path = @tagging.tagger_id
     @tagging.destroy
-    redirect_to notes_edit_path, status: :see_other
+    redirect_to edit_note_path(path), status: :see_other
+    # toilet_path(toilet), status: :see_other
   end
 
   private

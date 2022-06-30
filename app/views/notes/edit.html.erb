@@ -10,12 +10,23 @@
 <h2>Tags</h2>
 
 <% @taggers.each do |tagging| %>
-  <p> Referenced by: <%= link_to tagging.name, edit_note_path(tagging.reference) %></p>
+  <p><%= tagging.id %></p>
+  <p><%= tagging.tagger_id %></p>
+  <p><%= tagging.reference_id %></p>
+  <p> Referenced by: <%= link_to tagging.name, edit_note_path(tagging.reference_id) %></p>
+  <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+
 <% end %>
 
 <% @references.each do |tagging| %>
-  <p> Tagged by: <%= link_to tagging.name, edit_note_path(tagging.tagger) %></p>
+  <p><%= tagging.id %></p>
+  <p><%= tagging.tagger_id %></p>
+  <p><%= tagging.reference_id %></p>
+  <p> Tagged by: <%= link_to Note.find(tagging.tagger_id).name, edit_note_path(tagging.tagger_id) %></p>
+  <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
 <% end %>
 
+<br><br>
 
+<%# Delete the Note %>
 <%= link_to "delete_note", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
