@@ -1,6 +1,9 @@
 <h1>Finish what you started / Create a new note </h1>
 <%= render "form", note: @note %>
-<textarea style="width: 500px;
-                 height: 500px;
-                 border-style: none;"
-><%= @note.content %></textarea>
+<%# <div data-controller="text-update">
+  <textarea style="width: 100%;
+                  height: 100vh;
+                  border-style: none;"
+            data-action = "keyup->text-update#update"
+            data-text-update-target="content"
+  ><%= @note.content %>

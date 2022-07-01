@@ -31,7 +31,8 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user = current_user
     if params[:folder_id]
-      @note.folder = Folder.find(params[:folder_id])
+      set_folder
+      @note.folder = @folder
       authorize @folder
     end
     authorize @note
@@ -44,11 +45,20 @@ class NotesController < ApplicationController
 
   def update
     authorize @note
-    if @note.update(note_params)
-      redirect_to edit_note_path(@note)
-    else
-      render :update
+    respond_to do |format|
+      if @note.update(note_params)
+        format.html { redirect_to note_path(@note) }
+        format.json
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json
+      end
     end
+    # if @note.update(note_params)
+    #   redirect_to edit_note_path(@note)
+    # else
+    #   render :update
+    # end
   end
 
   def destroy

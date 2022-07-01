@@ -5,9 +5,11 @@
   <%= f.button :submit, "Add note" %>
   <% end %>
 <% else %>
-  <%= simple_form_for note do |f| %>
-  <%= f.input :name,input_html: { class: "input-field" } %>
-  <%= f.input :content, input_html: { class: "input-field" } %>
-  <%= f.button :submit, "Update note" %>
-  <% end %>
+  <div data-controller="text-update">
+    <%= simple_form_for note, data:{text_update_target: "content"} do |f| %>
+    <%= f.input :name,input_html: { class: "input-field" } %>
+    <%= f.input :content, input_html: { class: "input-field", data: { action: "keyup->text-update#update" } } %>
+    <%= f.button :submit, "Update note" %>
+    <% end %>
+  </div>
 <% end %>
