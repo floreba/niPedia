@@ -1,8 +1,8 @@
 <div data-controller="text-update">
   <% if params[:folder_id]%>
-      <%= simple_form_for [folder, note], data:{text_update_target: "form"} do |f| %>
+      <%= simple_form_for [folder, note] do |f| %>
       <%= f.input :name,input_html: { class: "input-field" } %>
-      <%= f.input :content, input_html: { class: "input-field", data: { action: "keyup->text-update#add" } } %>
+      <%= f.input :content, input_html: { class: "input-field" } %>
       <%= f.button :submit, "Add note" %>
       <% end %>
     </div>
