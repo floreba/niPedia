@@ -1,15 +1,16 @@
-<% if params[:folder_id]%>
-  <%= simple_form_for [folder, note] do |f| %>
-  <%= f.input :name,input_html: { class: "input-field" } %>
-  <%= f.input :content, input_html: { class: "input-field" } %>
-  <%= f.button :submit, "Add note" %>
+<div data-controller="text-update">
+  <% if params[:folder_id]%>
+      <%= simple_form_for [folder, note], data:{text_update_target: "form"} do |f| %>
+      <%= f.input :name,input_html: { class: "input-field" } %>
+      <%= f.input :content, input_html: { class: "input-field", data: { action: "keyup->text-update#add" } } %>
+      <%= f.button :submit, "Add note" %>
+      <% end %>
+    </div>
+  <% else %>
+      <%= simple_form_for note, data:{text_update_target: "form", action: "keyup->text-update#update"} do |f| %>
+      <%= f.input :name,input_html: { class: "input-field" } %>
+      <%= f.input :content, input_html: { class: "input-field" } %>
+      <%= f.button :submit, "Update note" %>
+      <% end %>
   <% end %>
-<% else %>
-  <div data-controller="text-update">
-    <%= simple_form_for note, data:{text_update_target: "content"} do |f| %>
-    <%= f.input :name,input_html: { class: "input-field" } %>
-    <%= f.input :content, input_html: { class: "input-field", data: { action: "keyup->text-update#update" } } %>
-    <%= f.button :submit, "Update note" %>
-    <% end %>
-  </div>
-<% end %>
+</div>
