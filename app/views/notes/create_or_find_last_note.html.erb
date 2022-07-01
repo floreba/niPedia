@@ -1,2 +1,6 @@
 <h1>Finish what you started / Create a new note </h1>
 <%= render "form", note: @note %>
+<textarea style="width: 500px;
+                 height: 500px;
+                 border-style: none;"
+><%= @note.content %></textarea>
