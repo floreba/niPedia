@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   resources :notes, only: %i[update index destroy edit new create]
 
-  get '/taggings', to: 'taggings#index', as: 'taggings'
-  post '/taggings/:id', to: 'taggings#create', as: 'create_tagging'
+  # post '/taggings', to: 'notes#create_tagging', as: 'create_tagging'
+  post '/taggings', to: 'taggings#create', as: 'create_tagging'
   delete '/taggings/:id', to: 'taggings#destroy', as: 'delete_tagging'
+  get '/taggings', to: 'taggings#index', as: 'taggings'
 
   resources :folders, only: [:index, :show, :create, :destroy] do
     resources :notes, only: %i[new create]
