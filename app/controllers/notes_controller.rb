@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
   def edit
     authorize @note
-    get_taggings # see private method --> gets taggeres & references
+    get_taggings
     @tagging = Tagging.new
   end
 
@@ -84,8 +84,12 @@ class NotesController < ApplicationController
   end
 
   def get_taggings
-    @taggers = policy_scope(Tagging.all).where('tagger_id = ?', @note.id)
-    @references = policy_scope(Tagging.all).where('reference_id = ?', @note.id)
+    @taggers = @note.taggings_as_tagger
+    @references = @note.taggings_as_reference
+  end
+
+  def tagging_params
+    params.require(:tagging).permit(:name, :tagger_id)
   end
 
 end
