@@ -9,11 +9,16 @@ class NotesController < ApplicationController
 
   def create_or_find_last_note
     if current_user.notes.empty?
-      @note = Note.create(name: "new note", content: "content")
+      @note = Note.create(name: 'Your first note', content:
+        "Exciting, isn't it? You can link your note with other notes. To do so, you simply
+        create a tagging that has the name of the referenced note.
+        If there's no note named like that, it will automatically create one.")
+      @note.user = current_user
     elsif
       @note = current_user.notes.order("updated_at ASC").last
     end
     authorize @note
+    redirect_to edit_note_path(@note), notice: 'Welcome (back) to your last updated note.'
   end
 
   def new
