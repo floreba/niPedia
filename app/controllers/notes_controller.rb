@@ -2,9 +2,14 @@ class NotesController < ApplicationController
   before_action :set_note, only: %i[edit update destroy]
 
   def index
-    # @notes = current_user.notes
     @note = Note.new
-    @notes = policy_scope(Note)
+    if params[:query].present?
+
+      @notes = policy_scope(Note).search_by_name_and_content(params[:query])
+    else
+      @notes = policy_scope(Note)
+    end
+
   end
 
   def create_or_find_last_note
