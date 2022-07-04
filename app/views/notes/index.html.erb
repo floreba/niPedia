@@ -2,8 +2,7 @@
 <%= render 'search' %>
 
 <% @notes.each do |note| %>
-  <p><%= link_to note.name, edit_note_path(note) %></p>
-  <p><%= note.content %></p>
+  <%= note.pg_search_highlight %>
   <br>
 <% end %>
 
