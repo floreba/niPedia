@@ -55,7 +55,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to note_path(@note) }
-        format.json
+        format.json { render json: @note }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json
