@@ -17,14 +17,15 @@ class Note < ApplicationRecord
           any_word: true,
           dictionary: "english",
           highlight: {
-            StartSel: '<b>',
-            StopSel: '</b>',
+            StartSel: "--",
+            StopSel: "--",
             MaxWords: 123,
             MinWords: 456,
             ShortWord: 4,
             HighlightAll: true,
             MaxFragments: 3,
             FragmentDelimiter: '&hellip;'
+
           }
         }
 

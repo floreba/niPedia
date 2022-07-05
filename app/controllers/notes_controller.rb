@@ -4,12 +4,10 @@ class NotesController < ApplicationController
   def index
     @note = Note.new
     if params[:query].present?
-      @notes = policy_scope(Note).search_by_name_and_content(params[:query])
-      @notes.with_pg_search_highlight
+      @notes = policy_scope(Note).search_by_name_and_content(params[:query]).with_pg_search_highlight
     else
       @notes = policy_scope(Note)
     end
-
   end
 
   def create_or_find_last_note

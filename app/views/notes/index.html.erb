@@ -2,8 +2,14 @@
 <%= render 'search' %>
 
 <% @notes.each do |note| %>
-  <%= note.pg_search_highlight %>
-  <br>
+  <% if params[:query].present? %>
+   <p> <%= note.pg_search_highlight%> </p>
+    <br>
+  <% else %>
+    <p> <%= note.name %> </p>
+    <p> <%= note.content %> </p>
+    <br>
+  <% end %>
 <% end %>
 
 <h2>Create a new note</h2>
