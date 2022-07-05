@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <div class="sidebar close">
+<div class="wrapper" data-controller="sidebar">
+  <div class="sidebar" data-sidebar-target="sidebarDiv">
     <div class="logo-details">
       <i class="fa-solid fa-book-open-reader"></i>
       <span class="logo_name">niPedia</span>
@@ -59,7 +59,7 @@
   <section class="home-section">
     <div class="home-content">
       <%# <i class='bx bx-menu'></i> %>
-      <i class="fa-solid fa-bars"></i>
+      <i class="fa-solid fa-bars" data-action="click->sidebar#toggleClose"></i>
     </div>
   </section>
 </div>
@@ -82,31 +82,31 @@
   // });
 
 
-  $(function () {
-      /* console.log("width: "+ document.body.clientWidth); */
+  // $(function () {
+  //     /* console.log("width: "+ document.body.clientWidth); */
 
-      //resizeScreen();
-      $(window).resize(function(){
-        resizeScreen();
-      });
+  //     //resizeScreen();
+  //     // $(window).resize(function(){
+  //     //   resizeScreen();
+  //     // });
 
-      $('.fa-bars').click(function(){
+  //     $('.fa-bars').click(function(){
 
-        // 點選選單按鈕時，大螢幕為新增或移除.close，小螢幕新增或移除.small-screen預設有.close，
-        if(document.body.clientWidth > 400){
-          $('.sidebar').toggleClass('close');
-        }else{
-          $('.sidebar').toggleClass('small-screen');
-        }
-      });
+  //       // 點選選單按鈕時，大螢幕為新增或移除.close，小螢幕新增或移除.small-screen預設有.close，
+  //       if(document.body.clientWidth > 400){
+  //         $('.sidebar').toggleClass('close');
+  //       }else{
+  //         $('.sidebar').toggleClass('small-screen');
+  //       }
+  //     });
 
-      function resizeScreen() {
-        // 大螢幕.sidebar預設為沒有.close，小螢幕.sidebar預設為有.close
-        if(document.body.clientWidth < 400){
-          $('.sidebar').addClass('close');
-        }else{
-          $('.sidebar').removeClass('close');
-        }
-      }
-    });
+  //     function resizeScreen() {
+  //       // 大螢幕.sidebar預設為沒有.close，小螢幕.sidebar預設為有.close
+  //       if(document.body.clientWidth < 400){
+    //         $('.sidebar').addClass('close');
+  //       }else{
+    //         $('.sidebar').removeClass('close');
+  //       }
+  //     }
+  //   });
 </script>
