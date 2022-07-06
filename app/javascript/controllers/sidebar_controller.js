@@ -18,6 +18,9 @@ export default class extends Controller {
       }
     }else{
       this.sidebarDivTarget.classList.add('close');
+      if (sessionStorage.sideBarClasses.includes('small-screen')){
+        this.sidebarDivTarget.classList.add('small-screen');
+      }
       // Class transition makes the sidebar open and close smoothly
       // But in small scree when class transition exists it opens the entire sidebar and close every time refreshed
     }
