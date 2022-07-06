@@ -4,25 +4,21 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["sidebarDiv", "profileDetails"];
   connect() {
-    // console.log( document.body.clientWidth);
     if(document.body.clientWidth > 600){
-      // console.log(this.sidebarDivTarget)
       if (sessionStorage.sideBarClasses.includes('close')) {
         this.sidebarDivTarget.classList.add('close');
-        // this.profileDetailsTarget.classList.remove('profile-transition');
-        // this.sidebarDivTarget.classList.remove('transition');
       }
       else{
         this.profileDetailsTarget.classList.add('profile-transition');
         this.sidebarDivTarget.classList.add('transition');
       }
     }else{
+      // Class transition makes the sidebar open and close smoothly
+      // But in small screen when class transition exists it opens the entire sidebar and close every time refreshed
       this.sidebarDivTarget.classList.add('close');
       if (sessionStorage.sideBarClasses.includes('small-screen')){
         this.sidebarDivTarget.classList.add('small-screen');
       }
-      // Class transition makes the sidebar open and close smoothly
-      // But in small scree when class transition exists it opens the entire sidebar and close every time refreshed
     }
   }
 
@@ -36,6 +32,8 @@ export default class extends Controller {
       // Transition added here to make the smallscreen sidebar to toggle smoothly
       this.sidebarDivTarget.classList.add('transition');
     }
+    // let you store key/value pairs in the browser in the client side
+    // Its used here to decide whether to leave the sidebar open/close when navigating through pages
     sessionStorage.sideBarClasses = this.sidebarDivTarget.classList;
   }
 }
