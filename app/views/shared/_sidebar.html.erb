@@ -6,11 +6,11 @@
     </div>
     <ul class="nav-links">
       <li>
-        <%= link_to folders_path do %>
+        <%= link_to folders_path data:{ action: "click->sidebar#navigate"} do %>
           <i class="fa-solid fa-folder-open"></i>
           <span class="link_name">Folders</span>
         <% end %>
-        <ul class="sub-menu blank">
+        <ul class="sub-menu blank" >
           <%= link_to 'Folders', folders_path %>
         </ul>
       </li>
@@ -41,7 +41,7 @@
         </ul>
       </li>
       <li>
-        <div class="profile-details">
+        <div class="profile-details" data-sidebar-target="profileDetails">
           <div class="profile-content">
 
           </div>

@@ -169,8 +169,12 @@
   justify-content: space-between;
   background: #c49c9c;
   padding: 12px 0;
+}
+
+.profile-transition {
   transition: all 0.5s ease;
 }
+
 .sidebar.close .profile-details{
   background: none;
 }
