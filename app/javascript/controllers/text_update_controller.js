@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     const csrfToken = document.querySelector("meta[name=csrf-token]").getAttribute("content")
-    console.log("Connecting to text-update");
+    //console.log("Connecting to text-update");
     // console.log(this.formTarget.action);
     // console.log(this.nameTarget.value);
   }
