@@ -26,9 +26,11 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    @folder = Folder.find(params[:folder_id])
+    if params[:folder_id]
+      @folder = Folder.find(params[:folder_id])
+      authorize @folder
+    end
     authorize @note
-    authorize @folder
   end
 
   def edit
@@ -58,7 +60,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to note_path(@note) }
-        format.json
+        format.json { render json: @note }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json
