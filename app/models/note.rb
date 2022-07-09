@@ -8,4 +8,26 @@ class Note < ApplicationRecord
   # So seperated the taggings type
   has_many :taggings_as_tagger, class_name: "Tagging", foreign_key: 'tagger_id', dependent: :destroy
   has_many :taggings_as_reference, class_name: "Tagging", foreign_key: 'reference_id', dependent: :destroy
+
+  include PgSearch::Model
+    pg_search_scope :search_by_name_and_content,
+      against: {name: 'A', content: 'B'},
+      using: {tsearch:
+        { prefix: true,
+          any_word: true,
+          dictionary: "english",
+          highlight: {
+            StartSel: "<mark>",
+            StopSel: "</mark>",
+            MaxWords: 280,
+            MinWords: 1,
+            ShortWord: 4,
+            HighlightAll: true,
+            MaxFragments: 3,
+            FragmentDelimiter: '&hellip;'
+
+          }
+        }
+
+      }
 end

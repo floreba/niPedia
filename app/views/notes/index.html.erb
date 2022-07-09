@@ -1,8 +1,18 @@
 <h1>All notes</h1>
+<%= render 'search' %>
 
 <% @notes.each do |note| %>
-  <p><%= link_to note.name, edit_note_path(note) %></p>
+  <% if params[:query].present? %>
+    <div class="card">
+      <b> <%= note.name %> </b>
+      <p> <%= raw(note.pg_search_highlight)%> </p>
+    </div>
+  <% else %>
+    <div class="card">
+      <div><b> <%= note.name %> </b> updated: <%= note.updated_at %> </div>
+      <p> <%= note.content %> </p>
+    </div>
+  <% end %>
 <% end %>
-
 <h2>Create a new note</h2>
 <%= render "form", note: @note %>
