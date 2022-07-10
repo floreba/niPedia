@@ -66,11 +66,6 @@ class NotesController < ApplicationController
         format.json
       end
     end
-    # if @note.update(note_params)
-    #   redirect_to edit_note_path(@note)
-    # else
-    #   render :update
-    # end
   end
 
   def destroy
