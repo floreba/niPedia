@@ -4,7 +4,7 @@
 <% @notes.each do |note| %>
   <% if params[:query].present? %>
     <div class="card">
-      <b> <%= note.name %> </b>
+      <div> <b> <%= note.name %>  </b> updated: <%= note.updated_at %> </div>
       <p> <%= raw(note.pg_search_highlight)%> </p>
     </div>
   <% else %>
