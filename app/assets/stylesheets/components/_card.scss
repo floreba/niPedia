@@ -5,6 +5,30 @@
  border-style: solid;
 }
 
+.card a {
+  text-decoration: none;
+  color: black;
+}
+
 .card:hover {
   border-color: #D9ADAD;
+}
+
+.tagcontainer {
+  background-color: lightgrey;
+  border-color: grey;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.tagcontainer  a {
+  color: white !important;
+}
+
+.tagcontainer  a:hover {
+  color: #D9ADAD !important;
+}
+
+.namedate {
+
 }

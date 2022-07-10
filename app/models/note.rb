@@ -19,7 +19,7 @@ class Note < ApplicationRecord
           highlight: {
             StartSel: "<mark>",
             StopSel: "</mark>",
-            MaxWords: 280,
+            MaxWords: 100,
             MinWords: 1,
             ShortWord: 4,
             HighlightAll: true,
