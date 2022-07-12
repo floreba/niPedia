@@ -1,0 +1,41 @@
+.tagform {
+
+}
+
+.tagform input[type="text"] {
+  -webkit-appearance: none !important;
+  background-clip: padding-box;
+  background-color: white;
+  vertical-align: middle;
+  border: 1px solid grey;
+  font-size: 1rem;
+  min-width: 20%;
+  line-height: 1.5;
+  padding: 0.1rem 1.25rem;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-right: none !important;
+  color: grey;
+}
+
+.tagform input[type="submit"] {
+  display: inline-block;
+  line-height: 1.5;
+  text-transform: uppercase;
+  background: #D9ADAD;
+  color: white;
+  vertical-align: middle;
+  text-shadow: none;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: 1px solid grey;
+  border-left: none;
+  font-weight: bold;
+}
+
+.tagform input[type="submit"]:hover {
+  background-color: #c09999;
+}

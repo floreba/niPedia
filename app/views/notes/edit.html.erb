@@ -5,12 +5,13 @@
     <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
   <% end %>
   <%= render "form", note: @note %>
-  <br> <br>
+  <br>
   <%= render "taggings/form", tagging: @tagging %>
+  <br>
+</div>
 
-
-  <h2>Tags</h2>
-
+<h2>Tags</h2>
+<br>
 <div class="d-flex flex-wrap">
   <% @taggers.each do |tagging| %>
     <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.name, edit_note_path(tagging.reference_id) %>
