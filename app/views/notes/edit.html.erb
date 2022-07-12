@@ -11,23 +11,15 @@
 
   <h2>Tags</h2>
 
-
+<div class="d-flex flex-wrap">
   <% @taggers.each do |tagging| %>
-    <p>Tagging ID <%= tagging.id %></p>
-    <p>Tagger ID <%= tagging.tagger_id %></p>
-    <p>Reference ID<%= tagging.reference_id %></p>
-    <p> Referenced by: <%= link_to tagging.name, edit_note_path(tagging.reference_id) %></p>
-    <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+    <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.name, edit_note_path(tagging.reference_id) %>
+     <div class="cancel material-symbols-outlined"><%= link_to "cancel", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %> </div>
+    </div>
 
   <% end %>
+</div>
 
-  <% @references.each do |tagging| %>
-    <p>Tagging ID<%= tagging.id %></p>
-    <p>Tagger ID<%= tagging.tagger_id %></p>
-    <p>Reference ID <%= tagging.reference_id %></p>
-    <p> Tagged by: <%= link_to Note.find(tagging.tagger_id).name, edit_note_path(tagging.tagger_id) %></p>
-    <%= link_to "Delete this conection", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
-  <% end %>
 
   <br><br>
 

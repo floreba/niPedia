@@ -23,3 +23,14 @@
   flex-grow: 1;
 }
 
+input[type="submit"]:hover {
+  background-color: #D9ADAD;
+}
+
+input[type="submit"] {
+  border-color: #D9ADAD;
+}
+
+.tagform {
+  max-width: 200px;
+}

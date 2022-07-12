@@ -23,6 +23,7 @@
 
 .tagcontainer  a {
   color: white !important;
+  text-decoration: none;
 }
 
 .tagcontainer  a:hover {
@@ -32,3 +33,14 @@
 .namedate {
 
 }
+
+.cancel {
+position: relative;
+left: 5px;
+font-size: small;
+}
+
+.cancel a{
+  color: black !important;
+}
+
