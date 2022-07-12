@@ -58,6 +58,7 @@ class NotesController < ApplicationController
   def update
     authorize @note
     respond_to do |format|
+      # puts " hiiiii #{format}"
       if @note.update(note_params)
         format.html { redirect_to note_path(@note) }
         format.json { render json: @note }
@@ -65,7 +66,9 @@ class NotesController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json
       end
+
     end
+
   end
 
   def destroy
