@@ -1,6 +1,11 @@
 
 <h2>All your Taggings</h2>
 
+<div id="container" style="width: 100%;
+                              height: 400px;
+                              margin: 0;
+                              padding: 0;">
+</div>
 
 
 <% @taggings.each do |t| %>
@@ -13,3 +18,41 @@
   <br>
   <br>
 <% end %>
+
+<script>
+  fetch("/taggings", {
+    method: "GET",
+    headers: {"Accept": "application/json"},
+  })
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data)
+    var chart = anychart.graph(data);
+    // set the title
+    chart.title("Network Graph showing the taggings in of your notes");
+
+    // draw the chart
+    chart.container("container").draw();
+
+
+    // enable the labels of nodes
+    chart.nodes().labels().enabled(true);
+
+    // configure the labels of nodes
+    chart.nodes().labels().format("{%name}");
+
+    // set the fill of nodes
+    chart.nodes().normal().fill("#D9ADAD");
+    chart.nodes().hover().fill("#D9ADAD");
+  })
+  // .then((data) => {
+  //   data.Search.forEach((result) => {
+  //     const movieTag = `<li class="list-inline-item">
+  //       <img src="${result.Poster}" alt="">
+  //       <p>${result.Title}</p>
+  //     </li>`
+  //     results.insertAdjacentHTML("beforeend", movieTag)
+  //   })
+  // })
+
+</script>

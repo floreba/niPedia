@@ -1,6 +1,13 @@
 class TaggingsController < ApplicationController
   def index
     @taggings = policy_scope(Tagging.all)
+    nodes = policy_scope(Note.all)
+    edges = @taggings.map{ |tag| {from: tag.tagger.id, to: tag.reference.id} }
+    @data = {nodes: nodes, edges: edges}
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @data }
+    end
   end
 
   def destroy
