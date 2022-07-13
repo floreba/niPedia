@@ -1,12 +1,5 @@
-<%# simple forms %>
-<%# simple_form_for tagging do |f| %>
-  <%#= f.input :name ,input_html: { class: "input-field d-flex flex-wrap tagform" } %>
-  <%#= f.hidden_field :tagger_id, value: @note.id %>
-  <%#= f.button :submit, "Create Tagging"%>
-<%# end %>
-
-<form class="d-flex justify-content-left tagform" id="new_tagging" novalidate="novalidate" action="/taggings" accept-charset="UTF-8" method="post">
-    <input type="text" name="tagging[name]" id="tagging_name" placeholder="Add a Tag">
-    <input value="<%=@note.id%>" autocomplete="off" type="hidden" name="tagging[tagger_id]" id="tagging_tagger_id">
-    <input type="submit" name="commit" value="Add"  class="material-symbols-outlined tagform" data-disable-with="Add">
-</form>
+<%= simple_form_for tagging do |f| %>
+  <%= f.input :name ,input_html: { class: "input-field" } %>
+  <%= f.hidden_field :tagger_id, value: @note.id %>
+  <%= f.button :submit, "Create Tagging" %>
+<% end %>
