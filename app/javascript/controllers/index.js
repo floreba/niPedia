@@ -12,3 +12,4 @@ application.register("sidebar", SidebarController)
 
 import TextUpdateController from "./text_update_controller.js"
 application.register("text-update", TextUpdateController)
+

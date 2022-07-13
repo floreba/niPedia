@@ -1,6 +1,13 @@
 class TaggingsController < ApplicationController
   def index
     @taggings = policy_scope(Tagging.all)
+    nodes = policy_scope(Note.all)
+    edges = @taggings.map{ |tag| {from: tag.tagger.id, to: tag.reference.id} }
+    @data = {nodes: nodes, edges: edges}
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @data }
+    end
   end
 
   def destroy
@@ -15,7 +22,7 @@ class TaggingsController < ApplicationController
   def create
     @tagging = Tagging.new(tagging_params)
 
-    @tagging.reference = Note.find_by('name = ?', @tagging.name)
+    @tagging.reference = Note.find_by('name = ? AND user_id = ?', @tagging.name, current_user.id)
     if @tagging.reference_id.nil?
       # declare a note + current user & save
       @reference_note = Note.new(name: @tagging.name)
