@@ -22,7 +22,7 @@ class Note < ApplicationRecord
             MaxWords: 100,
             MinWords: 1,
             ShortWord: 4,
-            HighlightAll: true,
+            HighlightAll: false,
             MaxFragments: 3,
             FragmentDelimiter: '&hellip;'
 

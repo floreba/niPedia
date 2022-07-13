@@ -10,7 +10,8 @@
       <%= simple_form_for note, data:{text_update_target: "form", action: "keyup->text-update#update"} do |f| %>
       <%= f.input :name,input_html: { class: "input-field", data: {text_update_target: "name"} }  %>
       <%= f.input :content, input_html: { class: "input-field content" } %>
-      <%= f.button :submit, "Update note" %>
+      <span>Update Note</span>
+      <%= f.button :submit, "Update", { class: "material-symbols-outlined" } %>
       <% end %>
   <% end %>
 </div>

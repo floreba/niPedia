@@ -1,68 +1,43 @@
   <%# Delete the Note %>
+<div class="container">
+  <div class="edit-container">
+    <h1>Edit your Note: <%= @note.name  %></h1>
+    <h2 class="date d-flex flex-wrap">Updated at <%= @note.updated_at.to_s[0..-8] %> </h2>
 
-<div class="edit-container">
-  <h1>Edit your Note: <%= @note.name  %></h1>
-  <h2 class="date d-flex flex-wrap">Updated at <%= @note.updated_at.to_s[0..-8] %> </h2>
 
-
-  <% if @note.folder %>
-    <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
-  <% end %>
-  <%= render "form", note: @note %>
-  <br>
-  <%= render "taggings/form", tagging: @tagging %>
-  <br>
-</div>
-
-<h2>Tags</h2>
-<br>
-<div class="d-flex flex-wrap">
-  <% @taggers.each do |tagging| %>
-    <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.name, edit_note_path(tagging.reference_id) %>
-     <div class="cancel material-symbols-outlined"><%= link_to "cancel", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %> </div>
-    </div>
-  <% end %>
-</div>
-
-<br>
-<br>
-
-<div> Referenced in...
-  <button class="material-symbols-outlined" id="tagshow" onclick="displayReferences()">expand_less</button>
-</div>
-
-<div id="references">
-  <br>
-  <div class="d-flex flex-wrap">
-    <% @references.each do |tagging| %>
-      <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.tagger.name, edit_note_path(tagging.tagger_id) %> </div>
+    <% if @note.folder %>
+      <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
     <% end %>
+    <%= render "form", note: @note %>
+    <br>
+    <%= render "taggings/form", tagging: @tagging %>
+    <br>
   </div>
-</div>
 
-<br>
-<br>
+  <div class="tagsplit d-flex justify-content-between">
+    <div class="d-flex flex-wrap border-top border-dark">
+      Tags: <% @taggers.each do |tagging| %>
+        <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.name, edit_note_path(tagging.reference_id) %>
+          <div class="cancel material-symbols-outlined"><%= link_to "cancel", delete_tagging_path(tagging.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %> </div>
+        </div>
+      <% end %>
+    </div>
 
-<script>
-  function displayReferences() {
-    const references = document.getElementById("references");
-    const tagshow = document.getElementById("tagshow");
-    if (references.style.display === "none") {
-      references.style.display = "block";
-      tagshow.innerHTML = "expand_less";
-
-    } else {
-      references.style.display = "none";
-      tagshow.innerHTML = "expand_more";
-    }
-  }
-</script>
-
-
-<%# Script for Tagging Show / Hide %>
-<div class="d-flex flex-row justify-content-start">
-  <span> Delete this note</span>
-  <div class="material-symbols-outlined delete">
-    <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+    <div class="d-flex flex-wrap border-top border-dark">
+          Referenced in: <% @references.each do |tagging| %>
+            <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.tagger.name, edit_note_path(tagging.tagger_id) %> </div>
+          <% end %>
+        </div>
+    </div>
   </div>
+
+  <br>
+
+  <div class="d-flex flex-row justify-content-center">
+    <span> Delete this note</span>
+    <div class="material-symbols-outlined delete">
+      <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+    </div>
+  </div>
+
 </div>

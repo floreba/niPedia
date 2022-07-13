@@ -2,26 +2,27 @@
   <h1>All notes</h1>
   <%= render 'search' %>
 
-<% @notes.each do |note| %>
-  <div class="card">
-    <%= link_to edit_note_path(note) do%>
-      <b> <%= note.name %>  </b> <i class="date"> <%= note.updated_at.to_s[0..-8] %> </i>
-      <% if params[:query].present? %>
-        <p> <%= raw(note.pg_search_highlight)%> </p>
-      <% else %>
-        <p> <%= note.content %> </p>
+  <% @notes.each do |note| %>
+    <div class="card">
+      <%= link_to edit_note_path(note) do%>
+        <b> <%= note.name %>  </b> <i class="date"> <%= note.updated_at.to_s[0..-8] %> </i>
+        <% if params[:query].present? %>
+          <p> <%= raw(note.pg_search_highlight)%> </p>
+        <% else %>
+          <p> <%= note.content %> </p>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <div class="d-flex flex-wrap">
-      <% note.taggings_as_tagger.each do |t| %>
-        <div class="tagcontainer d-flex p-1 m-1 "><%= link_to t.name, edit_note_path(t.reference_id)%> </div>
-        <br>
-      <% end %>
+      <div class="d-flex flex-wrap">
+        <% note.taggings_as_tagger.each do |t| %>
+          <div class="tagcontainer d-flex p-1 m-1 "><%= link_to t.name, edit_note_path(t.reference_id)%> </div>
+          <br>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <br>
 
-  <h2>Create a new note</h2>
+  <%# <h2>Create a new note</h2>
   <%= render "form", note: @note %>
 </div>

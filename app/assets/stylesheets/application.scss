@@ -50,10 +50,17 @@ font-weight: bold;
   display: none;
 }
 
-.delete {
-}
 
 .delete a {
   text-decoration: none;
   color:black;
+}
+
+input[type="submit"]:hover {
+  text-decoration: none;
+}
+
+input[type="submit"] {
+  color: black;
+
 }

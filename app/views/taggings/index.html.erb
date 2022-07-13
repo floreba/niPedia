@@ -7,13 +7,12 @@
                               padding: 0;">
 </div>
 
-
-<% @taggings.each do |t| %>
-  <p>Tag ID: <%= t.id %></p>
+<%# @taggings.each do |t|
+  <p>Tag ID: <%= t.id </p>
   <p>Reference</p>
-  <p><%= link_to t.name, edit_note_path(t.reference_id) %></p>
+  <p><%= link_to t.name, edit_note_path(t.reference_id)</p>
   <p>Tagged by Note</p>
-  <p><%= link_to Note.find(t.tagger_id).name, edit_note_path(t.tagger_id) %></p>
+  <p><%= link_to Note.find(t.tagger_id).name, edit_note_path(t.tagger_id) </p>
   <br>
   <br>
 <% end %>

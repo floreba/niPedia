@@ -7,39 +7,39 @@
     <ul class="nav-links">
       <li>
         <%= link_to folders_path data:{ action: "click->sidebar#navigate"} do %>
-          <i class="fa-solid fa-folder-open"></i>
+          <i class="material-symbols-outlined">folder</i>
           <span class="link_name">Folders</span>
         <% end %>
-        <ul class="sub-menu blank" >
-          <%= link_to 'Folders', folders_path %>
-        </ul>
       </li>
-      <li>
-        <div class="icon-link">
-          <%= link_to notes_path do %>
-            <i class="fa-solid fa-note-sticky"></i>
-            <span class="link_name">All Notes</span>
-          <% end %>
-          <i class='bx bxs-chevron-down arrow'></i>
-        </div>
-        <ul class="sub-menu">
-          <%= link_to 'All Notes', notes_path %>
-          <%= link_to 'New Note', new_note_path %>
-          <%= link_to 'Latest Note', root_path %>
-        </ul>
+
+      <li class="icon-link">
+        <%= link_to notes_path do %>
+          <i class="material-symbols-outlined">manage_search</i>
+          <span class="link_name">Find Notes</span>
+        <% end %>
       </li>
-      <li>
-        <div class="icon-link">
-          <%= link_to taggings_path(format: :html) do %>
-            <i class="fa-solid fa-circle-nodes"></i>
-            <span class="link_name">Graph Overview</span>
-          <% end %>
-          <i class='bx bxs-chevron-down arrow'></i>
-        </div>
-        <ul class="sub-menu">
-          <%= link_to 'All Taggings', taggings_path %>
-        </ul>
+
+      <li class="icon-link">
+        <%= link_to new_note_path do %>
+          <i class="material-symbols-outlined">playlist_add </i>
+          <span class="link_name">New Note</span>
+        <% end %>
       </li>
+
+      <li class="icon-link">
+        <%= link_to root_path do %>
+          <i class="material-symbols-outlined">edit_note </i>
+          <span class="link_name">Edit last Note</span>
+        <% end %>
+      </li>
+
+      <li class="icon-link">
+        <%= link_to taggings_path(format: :html) do %>
+          <i class="material-symbols-outlined">hub</i>
+          <span class="link_name">Graph Overview</span>
+        <% end %>
+      </li>
+
       <li>
         <div class="profile-details" data-sidebar-target="profileDetails">
           <div class="profile-content">
@@ -47,66 +47,18 @@
           </div>
           <div class="name-job">
             <div class="profile_name"><%= current_user.email %></div>
-            <div class="job">Web Desginer</div>
+            <%# <div class="job">Web Desginer</div> %>
           </div>
           <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-            <i class="fa-solid fa-right-from-bracket"></i>
+          <i class="material-symbols-outlined">logout</i>
           <% end %>
         </div>
       </li>
     </ul>
   </div>
-  <section class="home-section">
+  <%# <section class="home-section">
     <div class="home-content">
-      <%# <i class='bx bx-menu'></i> %>
       <i class="fa-solid fa-bars" data-action="click->sidebar#toggleClose"></i>
     </div>
-  </section>
+  </section> %>
 </div>
-
-<script>
-  // let arrow = document.querySelectorAll(".arrow");
-  // for (var i = 0; i < arrow.length; i++) {
-  //   arrow[i].addEventListener("click", (e) => {
-  //     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-  //     arrowParent.classList.toggle("showMenu");
-  //   });
-  // }
-
-  // let sidebarBtn = document.querySelector(".fa-bars");
-  // let sidebar = document.querySelector(".sidebar");
-
-  // console.log(sidebarBtn);
-  // sidebarBtn.addEventListener("click", () => {
-  //   sidebar.classList.toggle("close");
-  // });
-
-
-  // $(function () {
-  //     /* console.log("width: "+ document.body.clientWidth); */
-
-  //     //resizeScreen();
-  //     // $(window).resize(function(){
-  //     //   resizeScreen();
-  //     // });
-
-  //     $('.fa-bars').click(function(){
-
-  //       // 點選選單按鈕時，大螢幕為新增或移除.close，小螢幕新增或移除.small-screen預設有.close，
-  //       if(document.body.clientWidth > 400){
-  //         $('.sidebar').toggleClass('close');
-  //       }else{
-  //         $('.sidebar').toggleClass('small-screen');
-  //       }
-  //     });
-
-  //     function resizeScreen() {
-  //       // 大螢幕.sidebar預設為沒有.close，小螢幕.sidebar預設為有.close
-  //       if(document.body.clientWidth < 400){
-    //         $('.sidebar').addClass('close');
-  //       }else{
-    //         $('.sidebar').removeClass('close');
-  //       }
-  //     }
-  //   });
-</script>
