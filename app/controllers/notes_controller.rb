@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: %i[edit update destroy]
 
   def index
-    @note = Note.new
+    # @note = Note.new
     if params[:query].present?
       @notes = policy_scope(Note).search_by_name_and_content(params[:query]).with_pg_search_highlight
     else
