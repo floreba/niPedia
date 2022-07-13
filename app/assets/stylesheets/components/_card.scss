@@ -17,6 +17,7 @@
 .tagcontainer {
   background-color: lightgrey;
   border-color: grey;
+  border-style: solid;
   border-radius: 5px;
   font-size: small;
 }
@@ -41,6 +42,5 @@ font-size: small;
 }
 
 .cancel a{
-  color: black !important;
+  color: grey !important;
 }
-
