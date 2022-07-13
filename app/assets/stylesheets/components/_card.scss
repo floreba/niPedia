@@ -17,12 +17,14 @@
 .tagcontainer {
   background-color: lightgrey;
   border-color: grey;
+  border-style: solid;
   border-radius: 5px;
   font-size: small;
 }
 
 .tagcontainer  a {
   color: white !important;
+  text-decoration: none;
 }
 
 .tagcontainer  a:hover {
@@ -31,4 +33,14 @@
 
 .namedate {
 
+}
+
+.cancel {
+position: relative;
+left: 5px;
+font-size: small;
+}
+
+.cancel a{
+  color: grey !important;
 }

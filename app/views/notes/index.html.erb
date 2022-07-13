@@ -4,7 +4,7 @@
 <% @notes.each do |note| %>
   <div class="card">
     <%= link_to edit_note_path(note) do%>
-      <div class="namedate"> <b> <%= note.name %>  </b> <i> <%= note.updated_at.to_s[0..-8] %> </i> </div>
+      <b> <%= note.name %>  </b> <i class="date"> <%= note.updated_at.to_s[0..-8] %> </i>
       <% if params[:query].present? %>
         <p> <%= raw(note.pg_search_highlight)%> </p>
       <% else %>
