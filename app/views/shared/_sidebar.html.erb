@@ -6,7 +6,7 @@
     </div>
     <ul class="nav-links">
       <li>
-        <%= link_to folders_path data:{ action: "click->sidebar#navigate"} do %>
+        <%= link_to folders_path do %>
           <i class="material-symbols-outlined">folder</i>
           <span class="link_name">Folders</span>
         <% end %>
@@ -40,10 +40,9 @@
         <% end %>
       </li>
 
-      <li>
+      <li id="profile-list-item">
         <div class="profile-details" data-sidebar-target="profileDetails">
           <div class="profile-content">
-
           </div>
           <div class="name-job">
             <div class="profile_name"><%= current_user.email %></div>
