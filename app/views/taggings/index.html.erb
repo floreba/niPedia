@@ -1,7 +1,7 @@
 <div class="container">
   <h2>All your Taggings</h2>
 
-  <div id="container" style="width: 100%;
+  <div id="tags-container" style="width: 100%;
                                 height: 400px;
                                 margin: 0;
                                 padding: 0;">
@@ -30,7 +30,8 @@
     chart.title("Network Graph showing the taggings in of your notes");
 
     // draw the chart
-    chart.container("container").draw();
+    
+    chart.container("tags-container").draw();
 
 
     // enable the labels of nodes
@@ -43,14 +44,4 @@
     chart.nodes().normal().fill("#D9ADAD");
     chart.nodes().hover().fill("#D9ADAD");
   })
-  // .then((data) => {
-  //   data.Search.forEach((result) => {
-  //     const movieTag = `<li class="list-inline-item">
-  //       <img src="${result.Poster}" alt="">
-  //       <p>${result.Title}</p>
-  //     </li>`
-  //     results.insertAdjacentHTML("beforeend", movieTag)
-  //   })
-  // })
-
 </script>
