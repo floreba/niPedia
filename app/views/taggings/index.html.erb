@@ -30,9 +30,10 @@
     chart.title("Network Graph showing the taggings in of your notes");
 
     // draw the chart
-    
-    chart.container("tags-container").draw();
 
+    if (!document.getElementsByClassName("anychart-credits").length){
+      chart.container("tags-container").draw();
+    }
 
     // enable the labels of nodes
     chart.nodes().labels().enabled(true);
@@ -42,6 +43,5 @@
 
     // set the fill of nodes
     chart.nodes().normal().fill("#D9ADAD");
-    chart.nodes().hover().fill("#D9ADAD");
   })
 </script>
