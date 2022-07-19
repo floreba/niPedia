@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @folder.name %></h1>
+  <h2 class="header"><%= @folder.name %></h2>
   <% @folder.notes.each do |note| %>
     <p><%= link_to note.name, edit_note_path(note) %></p>
   <% end %>

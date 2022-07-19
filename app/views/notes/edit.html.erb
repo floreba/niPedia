@@ -1,8 +1,8 @@
   <%# Delete the Note %>
 <div class="container">
   <div class="edit-container">
-    <h1>Edit your Note: <%= @note.name  %></h1>
-    <h2 class="date d-flex flex-wrap">Updated at <%= @note.updated_at.to_s[0..-8] %> </h2>
+    <h2 class="header">Edit your Note: <%= @note.name  %></h2>
+    <h3 class="date d-flex flex-wrap">Updated at <%= @note.updated_at.to_s[0..-8] %> </h3>
 
 
     <% if @note.folder %>
