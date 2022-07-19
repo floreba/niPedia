@@ -30,7 +30,7 @@
     chart.title("Network Graph showing the taggings in of your notes");
 
     // draw the chart
-
+    console.log(document.getElementsByClassName("anychart-credits"));
     if (!document.getElementsByClassName("anychart-credits").length){
       chart.container("tags-container").draw();
     }
