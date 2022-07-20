@@ -8,6 +8,20 @@
   border-radius: 15px;
 }
 
-.btn-add-fridge {
-  width: 300px;
+// .btn-add-folder i{
+//   color: #D9ADAD;
+//   height: 50px;
+//   text-align: center;
+//   line-height: 50px;
+// }
+
+.btn-add-folder {
+  padding: 0px;
+  border-style: none;
+  width: 50px;
+}
+
+.folder-header{
+  display: flex;
+  justify-content: space-between;
 }

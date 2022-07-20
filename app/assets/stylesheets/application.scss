@@ -14,7 +14,6 @@
  *= require_self
  */
 @import 'bootstrap/scss/bootstrap';
-
 @import "components/index";
 
 .main-container {
@@ -67,5 +66,5 @@ input[type="submit"]:hover {
 
 input[type="submit"] {
   color: black;
-
 }
+
