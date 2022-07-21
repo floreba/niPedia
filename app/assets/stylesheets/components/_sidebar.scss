@@ -71,7 +71,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #D9ADAD;
+  background: #c49c9c;
 }
 .sidebar .nav-links li .icon-link{
   display: flex;
@@ -177,6 +177,10 @@
   background: #c49c9c;
   padding: 12px 0;
   transition: all 0.5s ease;
+}
+
+.active {
+  background-color: #c49c9c;
 }
 
 // .sidebar.close .profile-details{
