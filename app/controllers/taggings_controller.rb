@@ -22,7 +22,7 @@ class TaggingsController < ApplicationController
   def create
     @tagging = Tagging.new(tagging_params)
 
-    @tagging.reference = Note.find_by('name = ? AND user_id = ?', @tagging.name, current_user.id)
+    @tagging.reference = Note.find_by('name ILIKE ? AND user_id = ?', @tagging.name, current_user.id)
     if @tagging.reference_id.nil?
       # declare a note + current user & save
       @reference_note = Note.new(name: @tagging.name)
