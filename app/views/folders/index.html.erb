@@ -1,6 +1,7 @@
 <div class="container">
   <div class="folder-header">
     <h2 class="header">Your Folders</h2>
+    <%# New folder dropdown %>
     <div class="dropdown">
       <button class="btn button-primary btn-add-folder" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <div class="button-round">
@@ -14,7 +15,6 @@
               <%= simple_form_for [@folder] do |f| %>
                 <div class="m-3">
                   <%= f.input :name,label: "Create a new folder", placeholder: "name", input_html: { class: 'input-home' } %>
-                  <%# <%= f.button :submit %>
                 </div>
               <% end %>
             </div>
@@ -23,6 +23,7 @@
       </ul>
     </div>
   </div>
+  <%# end of the dropdown %>
   <% @folders.each do |folder| %>
     <p><%= link_to folder.name, folder_path(folder) %></p>
   <% end %>

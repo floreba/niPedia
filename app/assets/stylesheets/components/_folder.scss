@@ -3,6 +3,11 @@
   border-radius: 15px;
 }
 
+.dropdown{
+  margin-top: 3px;
+  margin-left: 20px;
+}
+
 .input-home {
   width: 250px;
   border-radius: 15px;
@@ -23,5 +28,5 @@
 
 .folder-header{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
