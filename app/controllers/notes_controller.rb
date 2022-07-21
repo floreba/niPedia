@@ -26,12 +26,17 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    new_note_count = current_user.notes.count
+    @note = Note.new(name: "New note (#{new_note_count})", content: '')
+    @note.user = current_user
     if params[:folder_id]
       @folder = Folder.find(params[:folder_id])
       authorize @folder
+      @note.folder = @folder
     end
-    authorize @note
+    @note.save
+    authorize(@note)
+    redirect_to edit_note_path(@note)
   end
 
   def edit
