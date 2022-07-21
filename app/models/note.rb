@@ -9,6 +9,9 @@ class Note < ApplicationRecord
   has_many :taggings_as_tagger, class_name: "Tagging", foreign_key: 'tagger_id', dependent: :destroy
   has_many :taggings_as_reference, class_name: "Tagging", foreign_key: 'reference_id', dependent: :destroy
 
+  validates :name, presence: true, uniqueness: { case_sensitive: false, message: "%{value} note already exists"  }, length: {maximum: 20}
+
+
   include PgSearch::Model
     pg_search_scope :search_by_name_and_content,
       against: {name: 'A', content: 'B'},
