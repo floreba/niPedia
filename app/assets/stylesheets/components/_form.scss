@@ -2,10 +2,12 @@
 .note-container .input-field{
 border-style: dashed;
 background-color: azure;
-font-family:'Courier New', Courier, monospace
+border-width: 2px;
+// font-family:'Courier New', Courier, monospace
 }
 
 .note-container .content{
   height: 50vh;
   width: 100%;
+  border-top: none;
 }
