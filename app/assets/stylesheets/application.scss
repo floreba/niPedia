@@ -14,6 +14,9 @@
  *= require_self
  */
 @import "components/index";
+body {
+  font-family:'Courier New', Courier, monospace
+}
 
 .main-container {
   display: flex;
