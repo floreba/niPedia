@@ -23,7 +23,7 @@ export default class extends Controller {
 
     // TEMPORARY Solution for highlighting page nav
       let urlEnd = window.location.href.slice(-4)
-      console.log(urlEnd)
+      // console.log(urlEnd)
       // document.getElementById(urlEnd).classList.add("active");
 
       switch (window.location.href.endsWith(urlEnd)) {

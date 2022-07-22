@@ -21,6 +21,7 @@
   <body>
     <div class="main-container">
       <%= render "shared/sidebar" unless  current_user.nil? %>
+
       <div class="yield-container">
         <%= yield %>
       </div>

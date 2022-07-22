@@ -6,31 +6,26 @@
     </div>
     <ul class="nav-links">
 
-      <li class="icon-link" id="folders">
-        <%= link_to folders_path do %>
-          <i class="material-symbols-outlined">folder</i>
-          <span class="link_name">Folders</span>
-        <% end %>
-      </li>
-
-      <li class="icon-link" id="notes">
-        <%= link_to notes_path do %>
-          <i class="material-symbols-outlined">manage_search</i>
-          <span class="link_name">Find Notes</span>
-        <% end %>
-      </li>
-
       <li class="icon-link" id="new">
         <%= link_to new_note_path do %>
-          <i class="material-symbols-outlined">playlist_add </i>
+          <i class="material-symbols-outlined">add </i>
           <span class="link_name">New Note</span>
         <% end %>
       </li>
 
       <li class="icon-link" id="edit">
         <%= link_to root_path do %>
-          <i class="material-symbols-outlined">edit_note </i>
+          <i class="material-symbols-outlined">edit</i>
           <span class="link_name">Edit last Note</span>
+        <% end %>
+      </li>
+
+      <br>
+
+      <li class="icon-link" id="notes">
+        <%= link_to notes_path do %>
+          <i class="material-symbols-outlined">search</i>
+          <span class="link_name">Find Notes</span>
         <% end %>
       </li>
 
@@ -40,6 +35,14 @@
           <span class="link_name">Graph Overview</span>
         <% end %>
       </li>
+
+      <li class="icon-link" id="folders">
+        <%= link_to folders_path do %>
+          <i class="material-symbols-outlined">folder</i>
+          <span class="link_name">Folders</span>
+        <% end %>
+      </li>
+
 
       <li id="profile-list-item">
         <div class="profile-details" data-sidebar-target="profileDetails">
