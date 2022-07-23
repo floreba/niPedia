@@ -17,7 +17,7 @@ class NotesController < ApplicationController
         create a tagging that has the name of the referenced note.
         If there's no note named like that, it will automatically create one.")
       @note.user = current_user
-      @note.save
+      @note.save!
     elsif
       @note = current_user.notes.order("updated_at ASC").last
     end
