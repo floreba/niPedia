@@ -9,6 +9,7 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     authorize @folder
+    @notes = current_user.notes
   end
 
   def create
