@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/taggings/:id', to: 'taggings#destroy', as: 'delete_tagging'
   get '/taggings', to: 'taggings#index', as: 'taggings'
 
-  resources :folders, only: [:index, :show, :create, :destroy] do
+  resources :folders, only: [:index, :show, :create, :destroy, :update] do
     resources :notes, only: %i[new create]
   end
 
