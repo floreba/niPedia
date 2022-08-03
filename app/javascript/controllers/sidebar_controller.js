@@ -19,6 +19,35 @@ export default class extends Controller {
     //   if (sessionStorage.sideBarClasses.includes('small-screen')){
     //     this.sidebarDivTarget.classList.add('small-screen');
     //   }
+      // console.log(window.location.href.slice(-5))
+
+    // TEMPORARY Solution for highlighting page nav
+      let urlEnd = window.location.href.slice(-4)
+      // console.log(urlEnd)
+      // document.getElementById(urlEnd).classList.add("active");
+
+      switch (window.location.href.endsWith(urlEnd)) {
+        case urlEnd === "edit":
+          document.getElementById(urlEnd).classList.add("active");
+          break;
+        case urlEnd === "otes":
+          document.getElementById("notes").classList.add("active");
+          break;
+        case urlEnd === "html":
+          document.getElementById("graph").classList.add("active");
+          break;
+        case urlEnd === "/new":
+          document.getElementById("new").classList.add("active");
+          break;
+        case urlEnd === "ders":
+          document.getElementById("folders").classList.add("active");
+          break;
+      }
+    //   {
+
+    //   // document.getElementById("edit").classList.add("active");
+    //   console.log("yes")
+    // }
     // }
     if (document.body.clientWidth < 600) {
       this.sidebarDivTarget.classList.add('close');

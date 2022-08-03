@@ -2,12 +2,14 @@
 <div class="container">
   <div class="edit-container">
     <h2 class="header">Edit your Note: <%= @note.name  %></h2>
-    <h3 class="date d-flex flex-wrap">Updated at <%= @note.updated_at.to_s[0..-8] %> </h3>
-
-
+    <h3 class="date d-flex flex-wrap"> <%= @note.updated_at.strftime("%B %-d, %Y")%> </h3>
     <% if @note.folder %>
-      <h3><%= link_to @note.folder.name, folder_path(@note.folder) %></h3>
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="material-symbols-outlined"> Folder_open </div>
+        <div class="no-deco"><%= link_to @note.folder.name, folder_path(@note.folder) %></div>
+      </div>
     <% end %>
+    <br>
     <%= render "form", note: @note %>
     <br>
     <%= render "taggings/form", tagging: @tagging %>
@@ -34,9 +36,8 @@
   <br>
 
   <div class="d-flex flex-row justify-content-center">
-    <span> Delete this note</span>
     <div class="material-symbols-outlined delete">
-      <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+      <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this note?"} %>
     </div>
   </div>
 

@@ -15,6 +15,9 @@
  */
 @import 'bootstrap/scss/bootstrap';
 @import "components/index";
+body {
+  font-family:'Courier New', Courier, monospace
+}
 
 .main-container {
   display: flex;
@@ -68,3 +71,7 @@ input[type="submit"] {
   color: black;
 }
 
+.no-deco a{
+  text-decoration: none;
+  color:black;
+}

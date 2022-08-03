@@ -8,9 +8,11 @@
     </div>
   <% else %>
       <%= simple_form_for note, data:{text_update_target: "form", action: "keyup->text-update#update"} do |f| %>
-      <%= f.input :name,input_html: { class: "input-field", data: {text_update_target: "name"} }  %>
-      <%= f.input :content, input_html: { class: "input-field content" } %>
-      <span>Update Note</span>
+      <div class="d-flex flex-column">
+        <%= f.input :name, label: false, input_html: { class: "input-field", data: {text_update_target: "name"}, maxlength: 20, inline_label: 'Name' } %>
+        <%= f.input :content, label: false,  input_html: { class: "input-field content", label: false } %>
+      </div>
+      <%# <% <span>Update Note</span> %>
       <%= f.button :submit, "Update", { class: "material-symbols-outlined" } %>
       <% end %>
   <% end %>
