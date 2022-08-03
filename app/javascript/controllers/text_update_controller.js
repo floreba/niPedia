@@ -21,10 +21,10 @@ export default class extends Controller {
     .then(response => response.json())
     .then((data) => {
       console.log(data)
-      let name = this.formContainerTarget.parentNode.children[0];
-      let updateTime = this.formContainerTarget.parentNode.children[1];
-      name.innerText = `Edit your Note: ${data.name}`;
-      updateTime.innerText = `Updated at ${data.updated_at}`
+      let name = document.getElementById("note-name"); // children[0].children[0];
+      let updateTime = document.getElementById("note-date");
+      name.innerText = `${data.name}`;
+      updateTime.innerText = `${data.updated_at.strftime("%B %-d, %Y")}`
     })
   }
 }
