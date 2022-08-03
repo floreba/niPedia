@@ -1,8 +1,17 @@
   <%# Delete the Note %>
 <div class="container">
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-success">
+      <%= msg %>
+    </div>
+  <% end %>
+
   <div class="edit-container">
-    <h2 class="header">Edit your Note: <%= @note.name  %></h2>
-    <h3 class="date d-flex flex-wrap"> <%= @note.updated_at.strftime("%B %-d, %Y")%> </h3>
+    <div class="d-flex justify-content-between">
+      <h2 class="header" id="note-name"><%= @note.name %></h2>
+      <h3 class="date d-flex flex-wrap" id="note-date"> Updated: <%= @time %> </h3>
+    </div>
     <% if @note.folder %>
       <div class="d-flex flex-wrap justify-content-center">
         <div class="material-symbols-outlined"> Folder_open </div>
@@ -30,10 +39,13 @@
       </div>
     </div>
   </div>
-  <br>
-  <div class="d-flex flex-row justify-content-center">
-    <div class="material-symbols-outlined delete">
-      <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this note?"} %>
-    </div>
-  </div>
+
+
+
+  <%# <div class="d-flex flex-row justify-content-center">
+    <div class="material-symbols-outlined delete"> %>
+      <%#= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this note?"} %>
+    <%# </div> %>
+  <%# </div> %>
+
 </div>

@@ -57,6 +57,13 @@ body {
   display: none;
 }
 
+.delete {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: 1px;
+}
 
 .delete a {
   text-decoration: none;
@@ -74,4 +81,8 @@ input[type="submit"] {
 .no-deco a{
   text-decoration: none;
   color:black;
+}
+
+.header {
+  font-weight: bold;
 }
