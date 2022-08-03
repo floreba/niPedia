@@ -13,7 +13,12 @@
         <%= f.input :content, label: false,  input_html: { class: "input-field content", label: false } %>
       </div>
       <%# <% <span>Update Note</span> %>
+      <div class="d-flex flex-row justify-content-between">
       <%= f.button :submit, "Update", { class: "material-symbols-outlined" } %>
+          <div class="delete material-symbols-outlined">
+            <%= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this note?"} %>
+          </div>
+        </div>
       <% end %>
   <% end %>
 </div>

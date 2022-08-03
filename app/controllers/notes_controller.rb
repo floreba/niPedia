@@ -36,7 +36,7 @@ class NotesController < ApplicationController
     end
     @note.save!
     authorize(@note)
-    redirect_to edit_note_path(@note)
+    redirect_to edit_note_path(@note), notice: "New Note created successfully"
   end
 
   def edit
