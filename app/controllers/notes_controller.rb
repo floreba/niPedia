@@ -36,11 +36,19 @@ class NotesController < ApplicationController
     end
     @note.save!
     authorize(@note)
-    redirect_to edit_note_path(@note)
+    redirect_to edit_note_path(@note), notice: "New Note created successfully"
   end
 
   def edit
     authorize @note
+    @dayspassed = (DateTime.now.to_date - @note.updated_at.to_date).to_i
+    if @dayspassed < 1
+      @time = 'Today'
+    elsif @dayspassed > 1 && @dayspassed < 15
+      @time = "#{pluralize(@dayspassed, 'day')} ago"
+    else
+      @time = @note.updated_at.strftime("%B %-d, %Y")
+    end
     get_taggings
     @tagging = Tagging.new
   end
@@ -64,7 +72,6 @@ class NotesController < ApplicationController
   def update
     authorize @note
     respond_to do |format|
-      # puts " hiiiii #{format}"
       if @note.update(note_params)
         format.html { redirect_to note_path(@note) }
         format.json { render json: @note }
