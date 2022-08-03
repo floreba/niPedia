@@ -72,9 +72,7 @@ class NotesController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json
       end
-
     end
-
   end
 
   def destroy

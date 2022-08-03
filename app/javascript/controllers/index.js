@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddNoteToFolderController from "./add_note_to_folder_controller.js"
+application.register("add-note-to-folder", AddNoteToFolderController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
@@ -12,4 +15,3 @@ application.register("sidebar", SidebarController)
 
 import TextUpdateController from "./text_update_controller.js"
 application.register("text-update", TextUpdateController)
-

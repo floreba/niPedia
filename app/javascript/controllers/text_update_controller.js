@@ -26,5 +26,6 @@ export default class extends Controller {
       name.innerText = `Edit your Note: ${data.name}`;
       updateTime.innerText = `Updated at ${data.updated_at}`
     })
+    
   }
 }
