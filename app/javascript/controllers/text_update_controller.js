@@ -26,5 +26,6 @@ export default class extends Controller {
       name.innerText = `${data.name}`;
       updateTime.innerText = `${data.updated_at.strftime("%B %-d, %Y")}`
     })
+    
   }
 }

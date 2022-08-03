@@ -9,6 +9,7 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     authorize @folder
+    @notes = current_user.notes
   end
 
   def create
@@ -22,12 +23,18 @@ class FoldersController < ApplicationController
     authorize @folder
   end
 
+  def update
+    raise
+    # authorize folder
+  end
+
   def destroy
     @folder = Folder.find(params[:id])
     authorize @folder
     @folder.destroy
     redirect_to folders_path, status: :see_other
   end
+
 
   private
 

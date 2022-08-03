@@ -1,0 +1,31 @@
+.dropdown-card {
+  width: 300px;
+  border-radius: 15px;
+}
+
+.dropdown{
+  margin-left: 20px;
+}
+
+.input-home {
+  width: 250px;
+  border-radius: 15px;
+}
+
+// .btn-add-folder i{
+//   color: #D9ADAD;
+//   height: 50px;
+//   text-align: center;
+//   line-height: 50px;
+// }
+
+.btn-add-folder {
+  padding: 0px;
+  border-style: none;
+  width: 50px;
+}
+
+.folder-header{
+  display: flex;
+  justify-content: flex-start;
+}

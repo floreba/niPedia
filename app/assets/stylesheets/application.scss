@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap/scss/bootstrap';
 @import "components/index";
 body {
   font-family:'Courier New', Courier, monospace
@@ -75,7 +76,6 @@ input[type="submit"]:hover {
 
 input[type="submit"] {
   color: black;
-
 }
 
 .no-deco a{
