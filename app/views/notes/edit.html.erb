@@ -32,16 +32,13 @@
         </div>
       <% end %>
     </div>
-    <div class="d-flex flex-wrap border-top border-dark">
-          Referenced in: <% @references.each do |tagging| %>
-            <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.tagger.name, edit_note_path(tagging.tagger_id) %> </div>
-          <% end %>
-        </div>
+      <div class="d-flex flex-wrap border-top border-dark">
+        Referenced in: <% @references.each do |tagging| %>
+          <div class="tagcontainer d-flex flex-wrap p-1 m-1"> <%= link_to tagging.tagger.name, edit_note_path(tagging.tagger_id) %> </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-
-
   <%# <div class="d-flex flex-row justify-content-center">
     <div class="material-symbols-outlined delete"> %>
       <%#= link_to "delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this note?"} %>

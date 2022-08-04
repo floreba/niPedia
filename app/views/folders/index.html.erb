@@ -25,10 +25,15 @@
     </div>
   </div>
   <%# end of the dropdown %>
-
-  <% @folders.each do |folder| %>
-    <div>
-      <p><%= link_to folder.name, folder_path(folder) %></p>
-    </div>
-  <% end %>
+  <div class="folders">
+    <% @folders.each do |folder| %>
+      <div class="folder no-deco">
+        <%= link_to folder_path(folder) do  %>
+            <%# <i class="material-symbols-outlined">add </i> %>
+            <i class="material-symbols-outlined">folder</i>
+            <div ><%= folder.name %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
