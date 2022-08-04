@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_action :set_note, only: %i[edit update destroy]
 
   def index
@@ -42,10 +43,12 @@ class NotesController < ApplicationController
   def edit
     authorize @note
     @dayspassed = (DateTime.now.to_date - @note.updated_at.to_date).to_i
+    @time = 'Today'
     if @dayspassed < 1
       @time = 'Today'
-    elsif @dayspassed > 1 && @dayspassed < 15
-      @time = "#{pluralize(@dayspassed, 'day')} ago"
+    elsif @dayspassed > 1 && @dayspassed < 30
+      @time = "#{pluralize(@dayspassed,'day')} ago"
+      # @time = @daysspassed.'day'.pluralize(@dayspassed)
     else
       @time = @note.updated_at.strftime("%B %-d, %Y")
     end
